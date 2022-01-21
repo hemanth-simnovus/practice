@@ -1,0 +1,119 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-01-18T09:22:27.838Z",
+    "end": "2022-01-18T09:22:27.897Z",
+    "duration": 59,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "81344857-c6da-4ab7-adfe-6c0c5f482af8",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [
+        {
+          "title": "\"before all\" hook in \"{root}\"",
+          "fullTitle": "\"before all\" hook in \"{root}\"",
+          "timedOut": false,
+          "duration": 4,
+          "state": null,
+          "speed": null,
+          "pass": false,
+          "fail": false,
+          "pending": false,
+          "context": null,
+          "code": "database.mainDB.once('open',()=>{\n  done()\n})",
+          "err": {},
+          "uuid": "a2053079-eefb-4485-877c-57514acdae96",
+          "parentUUID": "81344857-c6da-4ab7-adfe-6c0c5f482af8",
+          "isHook": true,
+          "skipped": false
+        }
+      ],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "39d2d3c8-314e-4e28-96b6-17d129a49fe4",
+          "title": "update user",
+          "fullFile": "/home/hemanth/Desktop/mochaTesting/simnovator-gui/backend/test/commonFunctions.test.js",
+          "file": "/test/commonFunctions.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "update user for whole json",
+              "fullTitle": "update user update user for whole json",
+              "timedOut": false,
+              "duration": 43,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// await insertDocument('users',userSchema,user).then((a)=>{\n//   console.log(a)\n//   expect(a).is.equal(true)\n// })\nawait readDocument('users',userSchema,{email:user.email}).then(async(response)=>{\n  let document = response.document\n  expect(response.message).is.equal('document found')\n  // expect(document.status).is.equal('active')\n  // expect(document.userRole).is.equal('admin')\n  // expect(document.fullName).is.equal(\"Simnovus bangalore\")\n  let updateObj = {\n    status:'deactive',\n    userRole:'creator',\n    fullName:'Simnovus',\n    logSettings:[  {\n      logProfileName: \"profile0\",\n      settings: {\n        sip: \"debug\",\n        ip: \"info\",\n        nas: \"debug\",\n        rrc: \"info\",\n        pdcp: \"debug\",\n        rlc: \"info\",\n        mac: \"debug\",\n        phy: \"info\",\n        displaySecurityKeys: true,\n        displayEncyptedPayload: false,\n        savePhySignals: false,\n      }\n    }\n    ]\n  }\n  await update('users',userSchema,{'email':user.email,'logSettings.logProfileName':'profile0'},updateObj).then((response)=>{\n    expect(response).is.equal(true)\n  })\n  await readDocument('users',userSchema,{email:user.email}).then(async(response)=>{\n    let document = response.document\n    expect(response.message).is.equal('document found')\n    expect(document.status).is.equal('deactive')\n    expect(document.userRole).is.equal('creator')\n    expect(document.fullName).is.equal(\"Simnovus\")\n  })\n})\n// await deleteDocument('users',{'email':'hemanth.k@simnovus.com'})",
+              "err": {},
+              "uuid": "c7949cfc-20f8-4311-b2a4-e820824de6cd",
+              "parentUUID": "39d2d3c8-314e-4e28-96b6-17d129a49fe4",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c7949cfc-20f8-4311-b2a4-e820824de6cd"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 43,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "9.1.3"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.0.1"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.0.1"
+    }
+  }
+}
